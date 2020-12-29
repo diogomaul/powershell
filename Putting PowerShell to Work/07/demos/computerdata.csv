@@ -1,0 +1,5 @@
+computername,port,comment
+www.pluralsight.com,80,http
+www.pluralsight.com,443,https
+jdhitsolutions.com,80,http
+jdhitsolutions.com,21,ftp

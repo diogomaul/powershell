@@ -1,0 +1,1 @@
+Get-CimInstance -Class Win32_OperatingSystem | Select-Object -Property LastBootUpTime

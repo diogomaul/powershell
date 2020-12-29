@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+    <ViewDefinitions>
+        <View>
+            <Name>System.IO.FileInfo</Name>
+            <ViewSelectedBy>
+                <TypeName>System.IO.FileInfo</TypeName>
+            </ViewSelectedBy>
+            <CustomControl>
+            <!-- ################ CUSTOM DEFINITIONS ################ -->
+             <CustomEntries>
+                <CustomEntry>
+                    <CustomItem>
+                        <ExpressionBinding>
+                            <ScriptBlock>$_.VersionInfo.Filename</ScriptBlock>
+                        </ExpressionBinding>
+                        <Text> (</Text>
+                                <ExpressionBinding>
+                                    <PropertyName>Attributes</PropertyName>
+                                </ExpressionBinding>
+                                <Text>)</Text>
+                        <NewLine/>
+                        <Frame>
+                            <LeftIndent>4</LeftIndent>
+                            <CustomItem>
+                                <Text>FileVersion: </Text>
+                                <ExpressionBinding>
+                                    <ScriptBlock>$_.VersionInfo.Fileversion</ScriptBlock>
+                                </ExpressionBinding>
+                                <NewLine/>
+                                <Text>Modified Age: </Text>
+                                <ExpressionBinding>
+                                    <ScriptBlock> ((Get-Date) - $_.LastWriteTime).toString()</ScriptBlock>
+                                </ExpressionBinding>
+                                <NewLine/>
+                                <Text>Created: </Text>
+                                <ExpressionBinding>
+                                    <PropertyName>CreationTime</PropertyName>
+                                </ExpressionBinding>
+                                <Text>   Modified: </Text>
+                                <ExpressionBinding>
+                                    <PropertyName>LastWriteTime</PropertyName>
+                                </ExpressionBinding>
+                                <NewLine/>
+                                <Text>SizeBytes: </Text>
+                                <ExpressionBinding>
+                                    <PropertyName>Length</PropertyName>
+                                </ExpressionBinding>
+                                <NewLine/>
+                                 <Text>Owner: </Text>
+                                <ExpressionBinding>
+                                    <ScriptBlock> ($_ | Get-ACL).Owner</ScriptBlock>
+                                </ExpressionBinding>
+                                <NewLine/>
+                            </CustomItem>
+                        </Frame>
+                    </CustomItem>
+                </CustomEntry>
+              </CustomEntries>
+            </CustomControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>

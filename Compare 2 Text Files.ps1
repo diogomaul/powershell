@@ -1,0 +1,1 @@
+﻿Get-Content "C:\Users\dmaul\OneDrive - SOTI\Desktop\17.txt" | Where-Object {$_ -notin (Get-Content "C:\Users\dmaul\OneDrive - SOTI\Desktop\15.txt")} | Set-Content -Path "C:\Users\dmaul\OneDrive - SOTI\Desktop\Results.txt"

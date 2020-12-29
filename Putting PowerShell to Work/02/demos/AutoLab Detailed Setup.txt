@@ -1,0 +1,29 @@
+These are detailed steps for setting up the Autolab project in order to easily set up a lab environment.
+
+1. Go to https://github.com/theJasonHelmick/PS-AutoLab-Env. You do NOT need to have a GitHub account.
+2. Read the README document in the repository. The instructions in this document are meant to supplement that file. If there are any discrepencies or conflicts with this document, follow the README.
+3. Watch the video tutorial at https://www.youtube.com/watch?v=fIXHvbgxEDk&feature=youtu.be
+4. In the README file on Github, click the link to the latest release.
+5. On the release page, click on the Source zip file link and download the file.
+6. Extract the zip file. It will have a folder name similar to the zip file with a version number.
+7. Open up an elevated PowerShell window.
+  a) find the Windows PowerShell application in your Start menu
+  b) Right-click and select 'Runas administrator'
+8. Check your PowerShell execution policy: Get-ExecutionPolicy
+9. If it is set to Restricted, or if you get an error about failing to run a script, run this command: Set-ExecutionPolicy bypass -force
+10. You can set your execution policy back to the previous setting after  building your lab environment.
+11. Change to the root of the extracted folder in your PowerShell session: cd c:\ps-autolab-env-<version.number>
+12. Run this command: .\setup-host.ps1
+    You should be able to accept all of the defaults. If you run into an error running this script, check your execution policy. You might also read the usage FAQ in the folder. You might need to reboot your computer to handle any pending updates before running this Setup-Host.
+13. Reboot as necessary.
+14. Open an elevated PowerShell window.
+15. Change to the Autolab folder which should be C:\Autolab if you accepted the defaults.
+16. Change to the specified configuration folder:
+    cd .\Configurations\Windows10\
+17. Look at the contents of Instructions.md: get-content .\Instructions.md
+18. To run the full lab setup unattended, run: unattend-lab
+    The first time you run this you may get prompted to install a nuget provider. The first time will also take time to run as it will download evaluation ISO images from Microsoft.
+
+    Towards the end of the setup process, it will begin testing and validating the setup. You will see error messages until everything converges and finalizes. Again, do not be surprised if setting up the lab environment takes several hours.
+19. If you encounter other problems with Autolab, post an issue in the GitHub repository. This will require a Github account. Be sure to include any relevant error messages and information about your operating system, the contents of $PSVersiontable from PowerShell and the version of Autolab. You can copy and paste the results from running this PowerShell command: get-module psautolab,lability -list | Select Name,Version
+
